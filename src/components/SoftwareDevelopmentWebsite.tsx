@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-import { ArrowRight, ChevronRight, Menu, X, Code, Zap, Settings2, Sparkles } from "lucide-react"
+import { ArrowRight, ChevronRight, Menu, X, Medal, Zap, Settings2, Sparkles, Shield, Clock, Star } from "lucide-react"
 import { motion, type Variants } from "framer-motion"
 import { GridMotion } from "./ui/grid-motion"
 import { cn } from "@/lib/utils"
@@ -227,9 +227,9 @@ const Logo = ({ className }: { className?: string }) => {
   return (
     <div className={cn("flex items-center space-x-2", className)}>
       <div className="bg-orange-500 rounded-lg p-2">
-        <Code className="h-6 w-6 text-white" />
+        <Medal className="h-6 w-6 text-white" />
       </div>
-      <span className="text-xl font-bold">КодМастер</span>
+      <span className="text-xl font-bold">RCMETAL</span>
     </div>
   )
 }
@@ -247,33 +247,16 @@ const CardDecorator = ({ children }: { children: React.ReactNode }) => (
 )
 
 export default function SoftwareDevelopmentWebsite() {
+  const medal = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/d6abf256-0128-4eb0-9c33-1e5bfe802c01.jpg"
+  const badges = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/aadcb69a-b285-47dd-8972-e5f56900e108.jpg"
+  const foundry = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/8090f96e-ccd3-4278-a3c7-020186f20b25.jpg"
+
   const gridItems = [
-    "https://cdn.poehali.dev/templates/landing-page/fluid-gradient.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/vr-experience.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/ai-whiteboard.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/human-ai.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/digital-eye.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/robot.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/purple-flow.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/data-beam.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/ai-keyboard.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/fiber-optic.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/fluid-gradient.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/vr-experience.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/ai-whiteboard.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/human-ai.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/digital-eye.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/robot.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/purple-flow.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/data-beam.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/ai-keyboard.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/fiber-optic.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/fluid-gradient.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/vr-experience.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/ai-whiteboard.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/human-ai.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/digital-eye.jpg",
-    "https://cdn.poehali.dev/templates/landing-page/robot.jpg",
+    medal, badges, foundry, medal, badges, foundry,
+    medal, badges, foundry, medal, badges, foundry,
+    medal, badges, foundry, medal, badges, foundry,
+    medal, badges, foundry, medal, badges, foundry,
+    medal, badges,
   ]
 
   return (
@@ -301,7 +284,7 @@ export default function SoftwareDevelopmentWebsite() {
                     href="#services"
                     className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                   >
-                    <span className="text-foreground text-sm">Индивидуальные решения для малого бизнеса</span>
+                    <span className="text-foreground text-sm">Изготовление металлических изделий под заказ</span>
                     <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
 
                     <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
@@ -317,14 +300,14 @@ export default function SoftwareDevelopmentWebsite() {
                   </a>
 
                   <h1 className="mt-8 max-w-4xl mx-auto text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                    Трансформируйте бизнес с{" "}
+                    Медали, значки и брелоки{" "}
                     <span className="inline-block text-orange-500 text-6xl md:text-7xl xl:text-[5.25rem] font-semibold">
-                      современным ПО
+                      под ваш заказ
                     </span>
                   </h1>
                   <p className="mx-auto mt-8 max-w-2xl text-balance text-lg text-muted-foreground">
-                    Создаем масштабируемые и эффективные программные решения под ваши бизнес-задачи.
-                    От веб-приложений до мобильных приложений - помогаем малому бизнесу расти с помощью технологий.
+                    Литейная мастерская RCMETAL создаёт наградные медали, фирменные значки и именные брелоки
+                    с уникальным дизайном. Каждое изделие — ручная работа из качественного металла.
                   </p>
                 </AnimatedGroup>
 
@@ -344,7 +327,7 @@ export default function SoftwareDevelopmentWebsite() {
                 >
                   <div key={1} className="bg-orange-500/10 rounded-[14px] border border-orange-200 p-0.5">
                     <Button size="lg" className="rounded-xl px-5 text-base bg-orange-500 hover:bg-orange-600">
-                      <span className="text-nowrap">Бесплатная консультация</span>
+                      <span className="text-nowrap">Оставить заявку</span>
                     </Button>
                   </div>
                   <Button key={2} size="lg" variant="ghost" className="h-10.5 rounded-xl px-5 hover:text-orange-500">
@@ -383,7 +366,7 @@ export default function SoftwareDevelopmentWebsite() {
                 <div className="group relative m-auto max-w-5xl px-6">
                   <div className="absolute inset-0 z-10 flex scale-95 items-center justify-center opacity-0 duration-500 group-hover:scale-100 group-hover:opacity-100">
                     <a href="#contact" className="block text-sm duration-150 hover:opacity-75 text-orange-500">
-                      <span>Готовы начать проект?</span>
+                      <span>Сделать заказ?</span>
                       <ChevronRight className="ml-1 inline-block size-3" />
                     </a>
                   </div>
@@ -471,25 +454,25 @@ export default function SoftwareDevelopmentWebsite() {
           <div className="mx-auto max-w-5xl px-6">
             <div className="text-center">
               <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
-                Почему выбирают <span className="text-orange-500">КодМастер</span>
+                Почему выбирают <span className="text-orange-500">RCMETAL</span>
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Мы создаем качественные программные решения, которые помогают вашему бизнесу расти и преуспевать в цифровом мире.
+                Мы создаём изделия из металла с душой — каждая медаль, значок и брелок несёт в себе ваш уникальный образ и смысл.
               </p>
             </div>
             <Card className="mx-auto mt-8 grid max-w-sm divide-y overflow-hidden shadow-zinc-950/5 border-orange-200 *:text-center md:mt-16 md:max-w-full md:grid-cols-3 md:divide-x md:divide-y-0">
               <div className="group shadow-zinc-950/5">
                 <CardHeader className="pb-3">
                   <CardDecorator>
-                    <Zap className="size-6 text-orange-500" aria-hidden />
+                    <Star className="size-6 text-orange-500" aria-hidden />
                   </CardDecorator>
 
-                  <h3 className="mt-6 font-medium">Быстрая разработка</h3>
+                  <h3 className="mt-6 font-medium">Ручная работа</h3>
                 </CardHeader>
 
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Быстрое прототипирование и гибкий процесс разработки для скорейшего вывода вашего продукта на рынок.
+                    Каждое изделие изготавливается вручную с вниманием к деталям — никакой штамповки, только авторское литьё.
                   </p>
                 </CardContent>
               </div>
@@ -497,15 +480,15 @@ export default function SoftwareDevelopmentWebsite() {
               <div className="group shadow-zinc-950/5">
                 <CardHeader className="pb-3">
                   <CardDecorator>
-                    <Settings2 className="size-6 text-orange-500" aria-hidden />
+                    <Shield className="size-6 text-orange-500" aria-hidden />
                   </CardDecorator>
 
-                  <h3 className="mt-6 font-medium">Масштабируемые решения</h3>
+                  <h3 className="mt-6 font-medium">Любой тираж</h3>
                 </CardHeader>
 
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Созданы для роста вместе с вашим бизнесом - наши решения масштабируются по мере развития ваших потребностей.
+                    Берёмся за небольшие партии от 1 штуки и крупные тиражи — гибкие условия для любого заказа.
                   </p>
                 </CardContent>
               </div>
@@ -513,15 +496,15 @@ export default function SoftwareDevelopmentWebsite() {
               <div className="group shadow-zinc-950/5">
                 <CardHeader className="pb-3">
                   <CardDecorator>
-                    <Sparkles className="size-6 text-orange-500" aria-hidden />
+                    <Clock className="size-6 text-orange-500" aria-hidden />
                   </CardDecorator>
 
-                  <h3 className="mt-6 font-medium">Современные технологии</h3>
+                  <h3 className="mt-6 font-medium">Точно в срок</h3>
                 </CardHeader>
 
                 <CardContent>
                   <p className="text-sm text-muted-foreground">
-                    Используем новейшие технологии и лучшие практики, чтобы ваше ПО было готово к будущему.
+                    Соблюдаем оговорённые сроки — получите готовые изделия вовремя, даже перед важным мероприятием.
                   </p>
                 </CardContent>
               </div>
@@ -537,7 +520,7 @@ export default function SoftwareDevelopmentWebsite() {
             <div className="space-y-4 sm:col-span-2 lg:col-span-1">
               <Logo />
               <p className="text-sm text-muted-foreground max-w-xs">
-                Трансформируйте свой бизнес с помощью индивидуальных программных решений. Создаем масштабируемые приложения, которые растут вместе с вашим успехом.
+                Литейная мастерская RCMETAL — наградные медали, значки и брелоки ручной работы под заказ. Воплощаем ваш дизайн в металле.
               </p>
               <div className="flex space-x-4">
                 <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
@@ -560,31 +543,31 @@ export default function SoftwareDevelopmentWebsite() {
 
             {/* Services */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold text-foreground">Услуги</h3>
+              <h3 className="text-sm font-semibold text-foreground">Продукция</h3>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Веб-разработка
+                    Наградные медали
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Мобильные приложения
+                    Значки и нагрудные знаки
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Заказное ПО
+                    Брелоки под заказ
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Разработка API
+                    Корпоративная символика
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Облачные решения
+                    Спортивные награды
                   </a>
                 </li>
               </ul>
@@ -596,27 +579,27 @@ export default function SoftwareDevelopmentWebsite() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    О нас
+                    О мастерской
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Наша команда
+                    Наши работы
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Карьера
+                    Процесс производства
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Кейсы
+                    Отзывы клиентов
                   </a>
                 </li>
                 <li>
                   <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
-                    Блог
+                    Цены
                   </a>
                 </li>
               </ul>
@@ -635,7 +618,7 @@ export default function SoftwareDevelopmentWebsite() {
                       d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  <span className="break-all">info@kodmaster.ru</span>
+                  <span className="break-all">info@rcmetal.ru</span>
                 </li>
                 <li className="flex items-center space-x-2">
                   <svg className="h-4 w-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -676,7 +659,7 @@ export default function SoftwareDevelopmentWebsite() {
           {/* Bottom section */}
           <div className="mt-12 pt-8 border-t border-orange-200">
             <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-              <div className="text-sm text-muted-foreground">2024 КодМастер. Все права защищены.</div>
+              <div className="text-sm text-muted-foreground">2024 RCMETAL. Все права защищены.</div>
               <div className="flex flex-wrap justify-center sm:justify-end gap-x-6 gap-y-2 text-sm">
                 <a href="#" className="text-muted-foreground hover:text-orange-500 transition-colors">
                   Политика конфиденциальности
