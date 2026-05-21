@@ -247,44 +247,58 @@ const CardDecorator = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
+function InfiniteRow({ photos, direction, onSelect }: { photos: string[], direction: 'left' | 'right', onSelect: (url: string) => void }) {
+  const doubled = [...photos, ...photos]
+  const animClass = direction === 'left' ? 'strip-left' : 'strip-right'
+  return (
+    <div className="w-full overflow-hidden">
+      <div className={`flex ${animClass} gap-3 w-max`}>
+        {doubled.map((url, i) => (
+          <div
+            key={i}
+            onClick={() => onSelect(url)}
+            className="aspect-square w-40 md:w-48 flex-shrink-0 overflow-hidden rounded-xl border border-orange-900/30 cursor-zoom-in group"
+          >
+            <img
+              src={url}
+              alt={`Работа ${(i % photos.length) + 1}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function PhotoStrip({ photos }: { photos: string[] }) {
   const [selected, setSelected] = React.useState<string | null>(null)
-  const doubled = [...photos, ...photos]
+
+  const row1 = photos.slice(0, Math.ceil(photos.length / 2))
+  const row2 = photos.slice(Math.ceil(photos.length / 2))
+  const row3 = [...photos].reverse().slice(0, Math.ceil(photos.length / 2))
 
   return (
     <>
-      {/* Бесконечная лента */}
-      <div className="mt-12 md:mt-20 w-full overflow-hidden">
-        <style>{`
-          @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .photo-strip { animation: scroll-left 30s linear infinite; }
-          .photo-strip:hover { animation-play-state: paused; }
-        `}</style>
-        <div className="flex photo-strip gap-3 w-max">
-          {doubled.map((url, i) => (
-            <div
-              key={i}
-              onClick={() => setSelected(url)}
-              className="aspect-square w-48 md:w-56 flex-shrink-0 overflow-hidden rounded-xl border border-orange-900/30 cursor-zoom-in group"
-            >
-              <img
-                src={url}
-                alt={`Работа ${(i % photos.length) + 1}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
+      <style>{`
+        @keyframes strip-left  { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes strip-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+        .strip-left  { animation: strip-left  28s linear infinite; }
+        .strip-right { animation: strip-right 32s linear infinite; }
+        .strip-left:hover, .strip-right:hover { animation-play-state: paused; }
+        @keyframes photoIn { from { transform: scale(0.85); opacity:0; } to { transform: scale(1); opacity:1; } }
+      `}</style>
+
+      <div className="mt-12 md:mt-20 w-full flex flex-col gap-3">
+        <InfiniteRow photos={row1} direction="left"  onSelect={setSelected} />
+        <InfiniteRow photos={row2} direction="right" onSelect={setSelected} />
+        <InfiniteRow photos={row3} direction="left"  onSelect={setSelected} />
       </div>
 
-      {/* Лайтбокс */}
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm p-4"
           onClick={() => setSelected(null)}
         >
           <img
@@ -293,7 +307,6 @@ function PhotoStrip({ photos }: { photos: string[] }) {
             className="max-h-[90vh] max-w-[90vw] rounded-2xl shadow-2xl object-contain"
             style={{ animation: 'photoIn 0.25s ease' }}
           />
-          <style>{`@keyframes photoIn { from { transform: scale(0.85); opacity:0; } to { transform: scale(1); opacity:1; } }`}</style>
         </div>
       )}
     </>
@@ -703,28 +716,15 @@ export default function SoftwareDevelopmentWebsite() {
 
         {/* Gallery Section */}
         <section id="gallery" className="py-16 md:py-32">
-          <div className="mx-auto max-w-7xl px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
-                Наши <span className="text-orange-500">работы</span>
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Медали, значки и брелоки, изготовленные в нашей мастерской
-              </p>
-            </div>
-            <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
-              {galleryItems.map((url, i) => (
-                <div key={i} className="break-inside-avoid overflow-hidden rounded-xl border border-orange-900/30 group cursor-pointer">
-                  <img
-                    src={url}
-                    alt={`Работа RCMetal ${i + 1}`}
-                    className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
+          <div className="text-center mb-12 px-6">
+            <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
+              Наши <span className="text-orange-500">работы</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Медали, значки и брелоки, изготовленные в нашей мастерской
+            </p>
           </div>
+          <PhotoStrip photos={galleryItems} />
         </section>
       </main>
 
