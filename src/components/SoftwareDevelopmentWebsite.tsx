@@ -229,7 +229,7 @@ const Logo = ({ className }: { className?: string }) => {
       <img
         src="https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/b1e605a7-bd13-4ea6-8220-8dd5971e9880.png"
         alt="RCMetal"
-        className="h-12 w-auto mix-blend-multiply dark:mix-blend-screen"
+        className="h-12 w-auto mix-blend-screen"
       />
     </div>
   )
