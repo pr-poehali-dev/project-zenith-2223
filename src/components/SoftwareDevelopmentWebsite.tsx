@@ -247,6 +247,59 @@ const CardDecorator = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
+function PhotoStrip({ photos }: { photos: string[] }) {
+  const [selected, setSelected] = React.useState<string | null>(null)
+  const doubled = [...photos, ...photos]
+
+  return (
+    <>
+      {/* Бесконечная лента */}
+      <div className="mt-12 md:mt-20 w-full overflow-hidden">
+        <style>{`
+          @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .photo-strip { animation: scroll-left 30s linear infinite; }
+          .photo-strip:hover { animation-play-state: paused; }
+        `}</style>
+        <div className="flex photo-strip gap-3 w-max">
+          {doubled.map((url, i) => (
+            <div
+              key={i}
+              onClick={() => setSelected(url)}
+              className="aspect-square w-48 md:w-56 flex-shrink-0 overflow-hidden rounded-xl border border-orange-900/30 cursor-zoom-in group"
+            >
+              <img
+                src={url}
+                alt={`Работа ${(i % photos.length) + 1}`}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Лайтбокс */}
+      {selected && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={() => setSelected(null)}
+        >
+          <img
+            src={selected}
+            alt="Увеличенное фото"
+            className="max-h-[90vh] max-w-[90vw] rounded-2xl shadow-2xl object-contain"
+            style={{ animation: 'photoIn 0.25s ease' }}
+          />
+          <style>{`@keyframes photoIn { from { transform: scale(0.85); opacity:0; } to { transform: scale(1); opacity:1; } }`}</style>
+        </div>
+      )}
+    </>
+  )
+}
+
 const SUBMIT_ORDER_URL = "https://functions.poehali.dev/fd8d856a-281a-4060-ae02-ddf67d5494bd"
 
 const PRODUCTS = ["Наградная медаль", "Значок / нагрудный знак", "Брелок", "Корпоративная символика", "Другое"]
@@ -493,20 +546,7 @@ export default function SoftwareDevelopmentWebsite() {
                 ...transitionVariants,
               }}
             >
-              <div className="mt-12 md:mt-20 mx-auto max-w-6xl px-2">
-                <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-                  {gridItems.map((url, i) => (
-                    <div key={i} className="aspect-square overflow-hidden rounded-xl border border-orange-900/20 group">
-                      <img
-                        src={url}
-                        alt={`Работа ${i + 1}`}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <PhotoStrip photos={gridItems} />
 
               <section className="bg-background pb-16 pt-16 md:pb-32">
                 <div className="group relative m-auto max-w-5xl px-6">
