@@ -1,0 +1,12 @@
+{
+  "tests": [
+    {
+      "name": "Import photos from Yandex Disk",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {"urls": []},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

@@ -126,7 +126,7 @@ const transitionVariants = {
 
 const menuItems = [
   { name: "Услуги", href: "#services" },
-  { name: "Решения", href: "#solutions" },
+  { name: "Галерея", href: "#gallery" },
   { name: "О нас", href: "#about" },
   { name: "Контакты", href: "#contact" },
 ]
@@ -510,6 +510,53 @@ export default function SoftwareDevelopmentWebsite() {
                 </CardContent>
               </div>
             </Card>
+          </div>
+        </section>
+
+        {/* Gallery Section */}
+        <section id="gallery" className="py-16 md:py-32">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="text-center mb-12">
+              <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
+                Наши <span className="text-orange-500">работы</span>
+              </h2>
+              <p className="mt-4 text-muted-foreground">
+                Медали, значки и брелоки, изготовленные в нашей мастерской
+              </p>
+            </div>
+            <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+              {[
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669622268106.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643908724.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643912230.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643916490.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643920160.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643923746.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643930048.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643933168.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957913431.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957918479.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957921289.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957924695.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957932173.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957934814.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957937607.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957940360.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957942893.JPG",
+                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957945577.JPG",
+              ].map((url, i) => (
+                <div key={i} className="break-inside-avoid overflow-hidden rounded-xl border border-orange-900/30 group cursor-pointer">
+                  <img
+                    src={url}
+                    alt={`Работа RCMetal ${i + 1}`}
+                    className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
