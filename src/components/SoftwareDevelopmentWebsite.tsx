@@ -247,6 +247,129 @@ const CardDecorator = ({ children }: { children: React.ReactNode }) => (
   </div>
 )
 
+const SUBMIT_ORDER_URL = "https://functions.poehali.dev/fd8d856a-281a-4060-ae02-ddf67d5494bd"
+
+const PRODUCTS = ["Наградная медаль", "Значок / нагрудный знак", "Брелок", "Корпоративная символика", "Другое"]
+
+function OrderForm() {
+  const [form, setForm] = React.useState({ name: '', phone: '', product: '', message: '' })
+  const [status, setStatus] = React.useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus('loading')
+    try {
+      const res = await fetch(SUBMIT_ORDER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      const data = await res.json()
+      if (data.success) {
+        setStatus('success')
+        setForm({ name: '', phone: '', product: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <section id="contact" className="py-16 md:py-32 bg-muted/30">
+      <div className="mx-auto max-w-2xl px-6">
+        <div className="text-center mb-10">
+          <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
+            Оставить <span className="text-orange-500">заявку</span>
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Опишите, что хотите изготовить — мы свяжемся с вами и рассчитаем стоимость
+          </p>
+        </div>
+
+        {status === 'success' ? (
+          <div className="rounded-2xl border border-orange-500/30 bg-orange-500/10 p-10 text-center">
+            <div className="text-4xl mb-4">🔥</div>
+            <h3 className="text-xl font-semibold text-orange-400 mb-2">Заявка принята!</h3>
+            <p className="text-muted-foreground">Мы свяжемся с вами в ближайшее время.</p>
+            <button
+              onClick={() => setStatus('idle')}
+              className="mt-6 text-sm text-orange-500 hover:underline"
+            >
+              Отправить ещё одну заявку
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="rounded-2xl border border-orange-900/30 bg-card p-8 space-y-5 shadow-lg shadow-orange-500/5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Ваше имя *</label>
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Иван Иванов"
+                  className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground">Телефон *</label>
+                <input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="+7 (999) 123-45-67"
+                  className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Что изготовить?</label>
+              <select
+                name="product"
+                value={form.product}
+                onChange={handleChange}
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-orange-500 transition"
+              >
+                <option value="">Выберите изделие...</option>
+                {PRODUCTS.map(p => <option key={p} value={p}>{p}</option>)}
+              </select>
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Детали заказа</label>
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                rows={4}
+                placeholder="Тираж, размер, материал, особые пожелания..."
+                className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-orange-500 transition resize-none"
+              />
+            </div>
+            {status === 'error' && (
+              <p className="text-sm text-red-400">Что-то пошло не так. Попробуйте ещё раз.</p>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="w-full rounded-xl bg-orange-500 hover:bg-orange-600 disabled:opacity-60 text-white font-semibold py-3.5 text-base transition-colors"
+            >
+              {status === 'loading' ? 'Отправляем...' : 'Отправить заявку'}
+            </button>
+          </form>
+        )}
+      </div>
+    </section>
+  )
+}
+
 export default function SoftwareDevelopmentWebsite() {
   const medal = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/d6abf256-0128-4eb0-9c33-1e5bfe802c01.jpg"
   const badges = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/aadcb69a-b285-47dd-8972-e5f56900e108.jpg"
@@ -327,7 +450,7 @@ export default function SoftwareDevelopmentWebsite() {
                   className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row"
                 >
                   <div key={1} className="bg-orange-500/10 rounded-[14px] border border-orange-200 p-0.5">
-                    <Button size="lg" className="rounded-xl px-5 text-base bg-orange-500 hover:bg-orange-600">
+                    <Button size="lg" className="rounded-xl px-5 text-base bg-orange-500 hover:bg-orange-600" onClick={() => document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}>
                       <span className="text-nowrap">Оставить заявку</span>
                     </Button>
                   </div>
@@ -512,6 +635,9 @@ export default function SoftwareDevelopmentWebsite() {
             </Card>
           </div>
         </section>
+
+        {/* Order Form Section */}
+        <OrderForm />
 
         {/* Gallery Section */}
         <section id="gallery" className="py-16 md:py-32">

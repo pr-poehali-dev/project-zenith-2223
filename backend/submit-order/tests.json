@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "name": "Submit order",
+      "method": "POST",
+      "path": "/",
+      "body": {"name": "Тест", "phone": "+7 999 123-45-67", "product": "Медаль", "message": "Тестовая заявка"},
+      "expectedStatus": 200,
+      "expectedBody": {"success": true},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
