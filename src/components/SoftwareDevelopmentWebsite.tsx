@@ -371,17 +371,33 @@ function OrderForm() {
 }
 
 export default function SoftwareDevelopmentWebsite() {
-  const medal = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/d6abf256-0128-4eb0-9c33-1e5bfe802c01.jpg"
-  const badges = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/aadcb69a-b285-47dd-8972-e5f56900e108.jpg"
-  const foundry = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/files/8090f96e-ccd3-4278-a3c7-020186f20b25.jpg"
-
-  const gridItems = [
-    medal, badges, foundry, medal, badges, foundry,
-    medal, badges, foundry, medal, badges, foundry,
-    medal, badges, foundry, medal, badges, foundry,
-    medal, badges, foundry, medal, badges, foundry,
-    medal, badges,
+  const BASE = "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/"
+  const galleryPhotos = [
+    "2022-11-28 10-27-36.JPG",
+    "2022-11-28 10-27-36_1669622268106.JPG",
+    "2022-11-28 10-27-36_1669643908724.JPG",
+    "2022-11-28 10-27-36_1669643912230.JPG",
+    "2022-11-28 10-27-36_1669643916490.JPG",
+    "2022-11-28 10-27-36_1669643920160.JPG",
+    "2022-11-28 10-27-36_1669643923746.JPG",
+    "2022-11-28 10-27-36_1669643930048.JPG",
+    "2022-11-28 10-27-36_1669643933168.JPG",
+    "2022-12-13 18-25-26.JPG",
+    "2022-12-13 18-25-26_1670957913431.JPG",
+    "2022-12-13 18-25-26_1670957918479.JPG",
+    "2022-12-13 18-25-26_1670957921289.JPG",
+    "2022-12-13 18-25-26_1670957924695.JPG",
+    "2022-12-13 18-25-26_1670957932173.JPG",
+    "2022-12-13 18-25-26_1670957934814.JPG",
+    "2022-12-13 18-25-26_1670957937607.JPG",
+    "2022-12-13 18-25-26_1670957940360.JPG",
+    "2022-12-13 18-25-26_1670957942893.JPG",
+    "2022-12-13 18-25-26_1670957945577.JPG",
   ]
+
+  // Сетка использует первые 12 фото, галерея — оставшиеся 8 (без пересечений)
+  const gridItems = galleryPhotos.slice(0, 12).map(f => BASE + f)
+  const galleryItems = galleryPhotos.slice(12).map(f => BASE + f)
 
   return (
     <>
@@ -651,28 +667,7 @@ export default function SoftwareDevelopmentWebsite() {
               </p>
             </div>
             <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
-              {[
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669622268106.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643908724.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643912230.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643916490.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643920160.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643923746.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643930048.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-11-28 10-27-36_1669643933168.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957913431.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957918479.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957921289.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957924695.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957932173.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957934814.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957937607.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957940360.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957942893.JPG",
-                "https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/gallery/2022-12-13 18-25-26_1670957945577.JPG",
-              ].map((url, i) => (
+              {galleryItems.map((url, i) => (
                 <div key={i} className="break-inside-avoid overflow-hidden rounded-xl border border-orange-900/30 group cursor-pointer">
                   <img
                     src={url}
