@@ -225,11 +225,12 @@ const HeroHeader = () => {
 
 const Logo = ({ className }: { className?: string }) => {
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
-      <div className="bg-orange-500 rounded-lg p-2">
-        <Medal className="h-6 w-6 text-white" />
-      </div>
-      <span className="text-xl font-bold">RCMETAL</span>
+    <div className={cn("flex items-center", className)}>
+      <img
+        src="https://cdn.poehali.dev/projects/70dfa8fa-e1a8-4f30-9eb8-02de021f36df/bucket/b1e605a7-bd13-4ea6-8220-8dd5971e9880.png"
+        alt="RCMetal"
+        className="h-12 w-auto"
+      />
     </div>
   )
 }
