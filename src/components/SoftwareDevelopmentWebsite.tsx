@@ -395,9 +395,12 @@ export default function SoftwareDevelopmentWebsite() {
     "2022-12-13 18-25-26_1670957945577.JPG",
   ]
 
+  // Кодируем пробелы в именах файлов для корректных URL
+  const toUrl = (f: string) => BASE + f.replace(/ /g, '%20')
+
   // Сетка использует первые 12 фото, галерея — оставшиеся 8 (без пересечений)
-  const gridItems = galleryPhotos.slice(0, 12).map(f => BASE + f)
-  const galleryItems = galleryPhotos.slice(12).map(f => BASE + f)
+  const gridItems = galleryPhotos.slice(0, 12).map(toUrl)
+  const galleryItems = galleryPhotos.slice(12).map(toUrl)
 
   return (
     <>
